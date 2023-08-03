@@ -82,16 +82,54 @@ module.exports = {
   // Update user
   async updateUser(req, res) {
     try {
-      const course = await User.findOneAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
         { $set: req.body },
         { runValidators: true, new: true }
       );
 
-      if (!course) {
-        res.status(404).json({ message: 'No course with this id!' });
+      if (!user) {
+        res.status(404).json({ message: 'No user with this id!' });
       }
-      res.json(course);
+      res.json(user);
+    } 
+    catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+  // add friend
+  async updateUser(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        {$addToSet: { friends: params.friendId }},
+        { runValidators: true, new: true }
+      );
+
+      if (!user) {
+        res.status(404).json({ message: 'No user with this id!' });
+      }
+      res.json(user);
+    } 
+    catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+  // remove a friend
+  async updateUser(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        {$pull: { friends: params.friendId }},
+        { runValidators: true, new: true }
+      );
+
+      if (!user) {
+        res.status(404).json({ message: 'No user with this id!' });
+      }
+      res.json(user);
     } 
     catch (err) {
       res.status(500).json(err);
