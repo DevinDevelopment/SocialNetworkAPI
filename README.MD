@@ -1,4 +1,4 @@
-# README.MD socialMediaAP
+# README.MD socialMediaAPI
 ## Author
 
 Devin Nunez
