@@ -40,11 +40,11 @@ We are able to perform all CRUD operations to each of the routes.
 ## Videos Demonstrating application:
 
 Application test and functionality showcase:
-https://drive.google.com/file/d/1LzIC-nKn3QZxrNnd2s_cdohhxBnrfjTu/view
+https://drive.google.com/file/d/1uQ0q2_LZysUogNsy96b1XXZgfvYkAcyH/view
 
 ## Deployment
 
-Repo: https://github.com/devv-nunn/SvgLogoMaker
+Repo: https://github.com/DevinDevelopment/SocialNetworkAPI
 
 # Tech Stack
 
