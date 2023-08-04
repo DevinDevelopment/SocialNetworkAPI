@@ -1,5 +1,4 @@
-# README.MD File Generator
-
+# README.MD socialMediaAP
 ## Author
 
 Devin Nunez
@@ -32,10 +31,6 @@ After running "npm i", start the application using "npm run start". This will al
 After running the application using mongoosedb you can then go to insomnia and test your routes.
 
 We are able to perform all CRUD operations to each of the routes.
-
-![Website screenshot](./assets/images/Capture1.PNG)
-![Website screenshot](./assets/images/Capture2.PNG)
-
 
 ## Videos Demonstrating application:
 
