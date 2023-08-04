@@ -6,7 +6,8 @@ module.exports = {
     try {
       const thought = await Thought.find();
       res.json(thought);
-    } catch (err) {
+    } 
+    catch (err) {
       res.status(500).json(err);
     }
   },
@@ -22,7 +23,8 @@ module.exports = {
       }
 
       res.json(thought);
-    } catch (err) {
+    } 
+    catch (err) {
       res.status(500).json(err);
     }
   },
@@ -30,11 +32,22 @@ module.exports = {
   // Create a thought
   async createThought(req, res) {
     try {
-      const thought = await Thought.create(req.body);
-      res.json(thought);
+      const user = await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $push: { thought: req.params.thoughtId} },
+        { new: true },
+      );
+
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: 'Post created, but found no user with that ID' });
+      }
+      console.log(req.params.thoughtId);
+      res.json('Created the post 🎉');
     } catch (err) {
       console.log(err);
-      return res.status(500).json(err);
+      res.status(500).json(err);
     }
   },
   
@@ -57,7 +70,6 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: "No user with this id" });
       }
-  
       res.json({ message: "deleted" });
     } 
     catch (err) {
@@ -79,7 +91,8 @@ module.exports = {
       }
 
       res.json(thought);
-    } catch (err) {
+    } 
+    catch (err) {
       res.status(500).json(err);
     }
   },
@@ -98,7 +111,8 @@ module.exports = {
       }
 
       res.json(thought);
-    } catch (err) {
+    } 
+    catch (err) {
       res.status(500).json(err);
     }
   },
@@ -117,7 +131,8 @@ module.exports = {
       }
 
       res.json(thought);
-    } catch (err) {
+    } 
+    catch (err) {
       res.status(500).json(err);
     }
   },
