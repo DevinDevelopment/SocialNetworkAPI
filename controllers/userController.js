@@ -17,6 +17,8 @@ module.exports = {
   // Get a single user
   async getSingleUser(req, res) {
     try {
+
+      // must populate two feilds when obtaining single user
       const user = await User.findOne({ _id: req.params.id })
         .select('-__v')
         .populate('thought')
@@ -54,6 +56,7 @@ module.exports = {
         return res.status(404).json({ message: 'No user with that ID' });
       }
 
+      // basically a cascade delete. When a user is deleted all associated thoughts are as well
       await Thought.deleteMany({ _id: { $in: user.thought } });
       res.json({ message: 'User and thoughts/reactions deleted!' })
     } 

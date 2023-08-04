@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 // Schema to create a reaction model
 const reactionSchema = new Schema(
@@ -29,11 +29,12 @@ const reactionSchema = new Schema(
   }
 );
 
+// virtual method to format the time
 reactionSchema.virtual('formattedTime').get(function () {
   return this.createdAt.toLocaleString();
 });
 
-// Schema to create a course model
+// Schema to create a thought model
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -51,7 +52,7 @@ const thoughtSchema = new Schema(
         required: true,
       },
     ],
-    reations: [reactionSchema],
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
